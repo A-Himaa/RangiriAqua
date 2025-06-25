@@ -1,0 +1,67 @@
+.facilities{
+    margin: 5% 13%;
+}
+.facilities .heading-style-2 {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+.f-img-sec-1{
+    display: flex;
+    gap: 2%;
+    padding: 2% 0;
+}
+.images{
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+.images img{
+    object-fit: cover;
+    height: 39vh;
+    width: 100%;
+    display: block;
+}
+.f-text-overlay{
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -40%);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    z-index: 2;
+}
+.f-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 35px;
+    transition: background-color 0.5s ease;
+    }
+.f-background:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.f-section{
+    padding-top: 5%;
+}
+
+.food{
+    padding: 5% 0;
+}
+.f-img-sec-2{
+    display: flex;
+    gap: 0.8%;
+    padding: 0.4% 0;
+}
+.food img{
+    object-fit: cover;
+    height: 25vh;
+    width: 100%;
+}
+.sec-2{
+    border-radius: 0;
+}
