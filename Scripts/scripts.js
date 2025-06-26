@@ -94,13 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }, { threshold: 0.2 });
 
-    const elementsToObserve = document.querySelectorAll('.card-container, .heading-style-2, .para-img-sec, .competency-areas');
-  elementsToObserve.forEach(element => {
+    const elementsToObserve = document.querySelectorAll('.card-container, .heading-style-2, .para-img-sec, .competency-areas, .images, .about-us-sec1, .sliding-sec-slide');
+    elementsToObserve.forEach(element => {
     observer.observe(element);
   });
 });
-
-
 
 // Progress Bar animation
 const observer = new IntersectionObserver((entries, observer) => {
@@ -129,9 +127,31 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Image slider 2
 
+  let currentSlide = 0;
+  const track = document.querySelector(".slider-track");
+  const slides = document.querySelectorAll(".sliding-sec-slide");
+  const totalSlides = slides.length;
 
+  function showSlide(index) {
+    if (index >= totalSlides) index = 0;
+    if (index < 0) index = totalSlides - 1;
+    track.style.transform = `translateX(-${index * 50}%)`;
+    currentSlide = index;
+  }
+
+  document.getElementById("next").addEventListener("click", () => {
+    showSlide(currentSlide + 1);
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    showSlide(currentSlide - 1);
+  });
+
+  // Auto-slide forward infinitely every 5 seconds
+  setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
 
 
 

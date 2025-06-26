@@ -1,14 +1,12 @@
 .image-container {
     margin: 0 1%;
 }
-
 .ad-cards {
     display: flex;
     justify-content: space-between; 
     flex-wrap: wrap;
     overflow: hidden;
 }
-
 .ad-img-wrapper{
     position: relative;
     width: 24%;
@@ -16,19 +14,16 @@
     overflow: hidden;
     cursor: pointer;
 }
-
 .ad-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 1s ease, filter 1s ease;
 }
-
 .ad-img-wrapper:hover img{
     transform: scale(1.13);
     filter: blur(5px);
 }
-
 .overlay{
     position: absolute;
     top: 0;
@@ -42,7 +37,6 @@
     opacity: 0;
     transition: opacity 2s ease;
 }
-
 .ad-text-overlay{
     display: flex;
     flex-direction: column;
@@ -50,14 +44,11 @@
     align-items: center;
     transition: opacity 1s ease;
 }
-
 .ad-text-overlay span{
     font-size: 20px;
     font-weight: 500;
     color: white;
-
 }
-
 .ad-text-overlay button{
     font-weight: 500;
     font-size: 15px;
@@ -68,25 +59,21 @@
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
 .ad-img-wrapper:hover .overlay{
     opacity: 1;
     transition: transform 1s ease, opacity 1s ease;
 }
-
 .ad-text-overlay span,
 .ad-text-overlay button{
     transform: translateY(20px);
     opacity: 0;
     transition: transform 1s ease, opacity 1s ease;
 }
-
 .ad-text-overlay span:hover,
 .ad-text-overlay button:hover{
     transform: translateY(20px);
     opacity: 0;
 }
-
 .ad-img-wrapper:hover .ad-text-overlay span,
 .ad-img-wrapper:hover .ad-text-overlay button{
     transform: translateY(0);
@@ -96,11 +83,10 @@
 .ad-section-mid{
     position: relative;
     width: 100%;
-    height: 75vh;
+    height: auto;
     overflow: hidden;
     margin:  5% 0 8% 0;
 }
-
 .sec-background{
     display: flex;
     align-items: center;
@@ -111,17 +97,19 @@
     z-index: 0;
     opacity: 0.1;
 }
-
 .ad-section-content{
     position: relative;
     display: flex;
     justify-content: space-between;
     z-index: 1; 
+    gap: 1%;
     flex-wrap: wrap;
     padding: 5% 12%;
     color:  #686868;
 }
-
+.ad-section-content h2{
+    color: black;
+}
 .ad-section-content2 ul li {
   list-style: none;
   padding-left: 0;
@@ -129,14 +117,15 @@
   font-size: 1rem;
   letter-spacing: 1px;
 }
-
-form{
-    padding: 2% 10%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.ad-section-content2 ul li:nth-child(2){
+  margin-bottom: 10%;
 }
-
+form{
+  padding: 5% 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 form input, form textarea {
   padding: 10px;
   border: none;
@@ -146,21 +135,82 @@ form input, form textarea {
   font-size: 1rem;
   background: transparent;
 }
-
 form input:focus,
 form textarea:focus {
   outline: none;
   border: 1px solid#686868; 
   border-radius: 0;
 }
-
 .send{
-    width: 30%;
-    height: 50px;
-    border: none;
-    background-color:  rgba(255, 96, 17, 0.896);
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 20px 0 20px 0;
+  width: 30%;
+  height: 50px;
+  border: none;
+  background-color:  rgba(255, 96, 17, 0.896);
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 20px 0 20px 0;
+}
+
+@media screen and (max-width: 1024px) {
+.ad-img-wrapper {
+  width: 49%;
+  height: 300px;
+}
+.ad-section-content {
+  flex-direction: column;
+  padding: 5% 8%;
+  align-items: start;
+}
+.ad-section-content > div {
+  width: 100%; 
+  height: auto;
+}
+.ad-section-mid {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 5% 0 8% 0;
+}
+.ad-section-content {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1;
+  color: #686868;
+  gap: 40px;
+}
+.ad-section-content h2{
+  padding: 0;
+}
+.ad-section-content2 ul li {
+  list-style: none;
+  margin: 1% 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.ad-section-content2 ul li:nth-child(2){
+  margin-bottom: 0;
+}
+.send {
+  width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+.ad-img-wrapper {
+  width: 100%; 
+  height: 250px;
+}
+.row1 img{
+  padding: 1% 0;
+}
+.ad-text-overlay span {
+  font-size: 16px;
+}
+.ad-text-overlay button {
+  font-size: 14px;
+  padding: 8px 16px;
+ }
 }
