@@ -390,6 +390,9 @@ section .wave.wave2{
 }
 
 @media (max-width: 480px) {
+  .logo{
+    margin-top: 20px;
+  }
   .slider{
     display: none;
   }
@@ -446,6 +449,9 @@ section .wave.wave2{
   }
 }
 @media (max-width: 600px) {
+  .logo{
+    margin-top: 20px;
+  }
   .slider {
     display: none;
   }
@@ -464,6 +470,9 @@ section .wave.wave2{
   }
 }
 @media (max-width: 900px) {
+  .logo{
+    margin-top: 20px;
+  }
   .nav-links {
     position: fixed;
     top: 0;
@@ -549,6 +558,9 @@ section .wave.wave2{
 }
 
 @media (max-width: 1024px) {
+  .logo{
+    margin-top: 20px;
+  }
   .social-icons{
     display: none;
   }
