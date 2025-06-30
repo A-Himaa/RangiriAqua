@@ -1,14 +1,4 @@
-// Hover effect
-  const navLinks = document.querySelectorAll('.nav-links ul li a');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(){
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-    })
-  })
-
-// Menu Icons
+// Side Menu Icon
   const menuIcon = document.getElementById('menuIcon');
   const navElements = document.getElementById('navLinks');
 
@@ -78,7 +68,6 @@ function typeEffect(){
 
   setTimeout(typeEffect, currentSpeed);
 }
-
 window.onload = () => {
   if (textElement) typeEffect();
 };
@@ -100,39 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Progress Bar animation
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const bar = entry.target;
-      const value = bar.getAttribute("data-value");
-      const fill = bar.querySelector(".progress-fill");
-
-      fill.style.width =`${value}%`;
-
-      observer.unobserve(bar);
-
-    }
-  });
-},{
-  threshold: 0.4});
-window.addEventListener("DOMContentLoaded", () => {
-  const bars = document.querySelectorAll(".progress");
-
-  bars.forEach(bar => {
-    const fill = bar.querySelector(".progress-fill");
-    fill.style.width = "0"; 
-    observer.observe(bar);  
-  });
-});
-
 // Pop Up section
 document.addEventListener('DOMContentLoaded', () => {
 const popup = document.getElementById('popup');
 const popupHeading = document.getElementById('popup-heading');
 const popupImg = document.getElementById('popup-img');
 const popupDesc = document.getElementById('popup-desc');
-const closeBtn = document.querySelector('.close');
+const closeBtn = document.getElementById('closePopUp');
 const popupContent = document.querySelector('.popup-content');
 
 const popupData = {
@@ -197,6 +160,7 @@ const popupData = {
     desc: "Fun games are all about laughing till your stomach hurts, friendly chaos, and just having the best time ever! Whether it’s silly relays, wacky challenges, or team games that get everyone moving, these activities are perfect for breaking the ice and creating pure, unforgettable fun. No pressure—just play, cheer, and enjoy every moment!"
   }
 }
+
 document.querySelectorAll('.ad-img-wrapper button').forEach((btn) => {
   btn.addEventListener('click', () => {
     const parentImg = btn.closest('.ad-img-wrapper').querySelector('img');
@@ -214,15 +178,96 @@ document.querySelectorAll('.ad-img-wrapper button').forEach((btn) => {
     }
   });
 });
-closeBtn.addEventListener('click', () => {
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
     popup.classList.add('hidden');
   });
+}
 
+  if (popup) {
   popup.addEventListener('click', (e) => {
     if (e.target === popup) popup.classList.add('hidden');
   });
-
+}
 });
+
+// Progress Bar animation
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const value = bar.getAttribute("data-value");
+      const fill = bar.querySelector(".progress-fill");
+
+      fill.style.width =`${value}%`;
+
+      observer.unobserve(bar);
+
+    }
+  });
+},{
+  threshold: 0.4});
+window.addEventListener("DOMContentLoaded", () => {
+  const bars = document.querySelectorAll(".progress");
+
+  bars.forEach(bar => {
+    const fill = bar.querySelector(".progress-fill");
+    fill.style.width = "0"; 
+    observer.observe(bar);  
+  });
+});
+
+// Image Carousel 
+const dots = document.querySelectorAll(".dot");
+  const images = document.getElementById("images");
+  const totalSlides = dots.length;
+
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-index"));
+
+      images.style.transform = `translateX(-${index * 34}%)`;
+
+      dots.forEach(d => d.classList.remove("active"));
+      dot.classList.add("active");
+    });
+  });
+
+// Paragraph Slider
+let currentSlide = 0;
+  const track = document.querySelector(".image-list");
+  const slides = document.querySelectorAll(".sliding-sec-slide");
+  const nextSlide = document.getElementById("nextPara")
+  const prevSlide = document.getElementById("prevPara")
+  const paraSlides = slides.length;
+
+  function showSlide(index) {
+    if (index >= paraSlides) index = 0;
+    if (index < 0) index = paraSlides - 1;
+    track.style.transform = `translateX(-${index * 50}%)`;
+    currentSlide = index;
+  }
+
+  if (nextSlide) {
+  nextSlide.addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+  });
+ }
+
+  if (prevSlide) {
+  prevSlide.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
+  });
+}
+  setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 7000);
+
+
+
+
+
+
 
 
   
