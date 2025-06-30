@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }, { threshold: 0.2 });
 
-    const elementsToObserve = document.querySelectorAll('.card-container, .heading-style-2, .para-img-sec, .competency-areas, .images, .about-us-sec1, .sliding-sec-slide');
+    const elementsToObserve = document.querySelectorAll('.card-container, .heading-style-2, .para-img-sec, .competency-areas, .images, .about-us-sec1, .sliding-sec-slide, .popup-content');
     elementsToObserve.forEach(element => {
     observer.observe(element);
   });
@@ -126,38 +126,103 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Pop Up section
+document.addEventListener('DOMContentLoaded', () => {
+const popup = document.getElementById('popup');
+const popupHeading = document.getElementById('popup-heading');
+const popupImg = document.getElementById('popup-img');
+const popupDesc = document.getElementById('popup-desc');
+const closeBtn = document.querySelector('.close');
+const popupContent = document.querySelector('.popup-content');
 
-
-  let currentSlide = 0;
-  const track = document.querySelector(".slider-track");
-  const slides = document.querySelectorAll(".sliding-sec-slide");
-  const totalSlides = slides.length;
-
-  function showSlide(index) {
-    if (index >= totalSlides) index = 0;
-    if (index < 0) index = totalSlides - 1;
-    track.style.transform = `translateX(-${index * 50}%)`;
-    currentSlide = index;
+const popupData = {
+  "wr-rop": {
+    heading: "Flat Water Rafting",
+    img: "../Assets/Images/cards/wr-rop.jpg",
+    desc: "Flat water rafting is all about smooth rides and stunning views. It’s a laid-back adventure where you paddle through calm waters, enjoy the fresh air, and take in the beauty around you. No wild waves—just a peaceful, fun way to spend time with friends or family out in nature."
+  },
+   "hight-rope": {
+    heading: "High Rope",
+    img: "../Assets/Images/adventure/hight-rope.jpg",
+    desc: "High rope adventures are all about testing your balance, courage, and coordination—high up in the air! Set among tall trees or poles, these obstacle courses include rope bridges, zip lines, and swinging elements that challenge you in the best way. It’s a thrilling experience that’s perfect for team building, building confidence, and having a whole lot of fun."
+  },
+   "paint-ball": {
+    heading: "Paint Ball",
+    img: "../Assets/Images/adventure/paint-ball.jpg",
+    desc: "Paintball is an action-packed game where you gear up, grab a paintball marker, and dive into fast-paced battles with friends. It’s all about strategy, teamwork, and quick moves as you try to tag opponents with colorful paintballs. Whether you’re competing or just playing for fun, it’s a thrilling way to get your adrenaline pumping!"
+  },
+   "archery": {
+    heading: "Archery",
+    img: "../Assets/Images/adventure/archery.jpg",
+    desc: "Archery is the art of shooting arrows at a target using a bow. It’s a fun mix of focus, skill, and patience—whether you’re aiming for bullseyes or just trying it out for the first time. Great for building concentration and enjoying a calm but exciting challenge outdoors!"
+  },
+   "shoot-bot": {
+    heading: "Target Shooting",
+    img: "../Assets/Images/cards/shoot-bot.jpg",
+    desc: "Target shooting is a thrilling activity that tests your aim, focus, and steady hand. Using air rifles or similar gear, you take aim at fixed targets to see how accurate you can be. It’s a fun way to challenge yourself, build precision, and enjoy a bit of friendly competition in a safe and controlled setting."
+  },
+   "activity1": {
+    heading: "Fun Activity",
+    img: "../Assets/Images/adventure/activity1.jpg",
+    desc: "Fun games are all about laughing till your stomach hurts, friendly chaos, and just having the best time ever! Whether it’s silly relays, wacky challenges, or team games that get everyone moving, these activities are perfect for breaking the ice and creating pure, unforgettable fun. No pressure—just play, cheer, and enjoy every moment!"
+  },
+   "activity2": {
+    heading: "Fun Activity",
+    img: "../Assets/Images/adventure/activity2.jpg",
+    desc: "Fun games are all about laughing till your stomach hurts, friendly chaos, and just having the best time ever! Whether it’s silly relays, wacky challenges, or team games that get everyone moving, these activities are perfect for breaking the ice and creating pure, unforgettable fun. No pressure—just play, cheer, and enjoy every moment!"
+  },
+   "low-rope": {
+    heading: "Low Rope",
+    img: "../Assets/Images/adventure/low-rope.jpg",
+    desc: "Low rope activities offer a fun and hands-on challenge that brings people together. Set just above the ground, these tasks involve balancing, swinging, and problem-solving as a team. It’s all about trust, communication, and a lot of laughs—perfect for building connections and enjoying some lighthearted adventure!"
+  },
+   "burma1": {
+    heading: "Burma Bridge",
+    img: "../Assets/Images/adventure/burma1.jpg",
+    desc: "Burma Bridge is a thrilling rope challenge that tests your balance and nerves! Made of two side ropes to hold and one to walk on, it stretches high above the ground and wobbles with every step. It’s a fun mix of adventure, focus, and excitement—perfect for those who love a bit of height and a lot of challenge!"
+  },
+   "img-slide-2": {
+    heading: "Fun Activity",
+    img: "../Assets/Images/img-slide-2.jpg",
+    desc: "Fun games are all about laughing till your stomach hurts, friendly chaos, and just having the best time ever! Whether it’s silly relays, wacky challenges, or team games that get everyone moving, these activities are perfect for breaking the ice and creating pure, unforgettable fun. No pressure—just play, cheer, and enjoy every moment!"
+  },
+   "img-slide-8": {
+    heading: "Aerial Rope",
+    img: "../Assets/Images/img-slide-8.jpg",
+    desc: "Aerial rope activities take adventure to new heights—literally! Suspended above the ground, these rope challenges test your strength, balance, and bravery as you climb, swing, or cross obstacles in the air. It’s a fun and energizing experience that gives you a real taste of adventure while pushing your limits in the best way!"
+  },
+   "activity3": {
+    heading: "Fun Activity",
+    img: "../Assets/Images/adventure/activity3.jpg",
+    desc: "Fun games are all about laughing till your stomach hurts, friendly chaos, and just having the best time ever! Whether it’s silly relays, wacky challenges, or team games that get everyone moving, these activities are perfect for breaking the ice and creating pure, unforgettable fun. No pressure—just play, cheer, and enjoy every moment!"
   }
+}
+document.querySelectorAll('.ad-img-wrapper button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const parentImg = btn.closest('.ad-img-wrapper').querySelector('img');
+    const key = parentImg.src.split('/').pop().split('.')[0];
 
-  document.getElementById("next").addEventListener("click", () => {
-    showSlide(currentSlide + 1);
+    if (popupData[key]) {
+      popupHeading.textContent = popupData[key].heading;
+      popupImg.src = popupData[key].img;
+      popupDesc.textContent = popupData[key].desc;
+      popup.classList.remove('hidden');
+
+      popupContent.classList.remove('animate'); 
+      void popupContent.offsetWidth;
+      popupContent.classList.add('animate');
+    }
+  });
+});
+closeBtn.addEventListener('click', () => {
+    popup.classList.add('hidden');
   });
 
-  document.getElementById("prev").addEventListener("click", () => {
-    showSlide(currentSlide - 1);
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.classList.add('hidden');
   });
 
-  // Auto-slide forward infinitely every 5 seconds
-  setInterval(() => {
-    showSlide(currentSlide + 1);
-  }, 5000);
-
-
-
-
-
+});
 
 
   
-
