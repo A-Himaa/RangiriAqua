@@ -389,9 +389,6 @@ section .wave.wave2{
   font-size: 10px;
 }
 
-
-
-
 @media (max-width: 480px) {
   .slider{
     display: none;
@@ -538,11 +535,6 @@ section .wave.wave2{
     letter-spacing: 3px;
     margin-bottom: 15px;
   }
-  /* .para-type2 {
-    font-size: 1rem;
-    margin: 2% 5%;
-    letter-spacing: 0.5px;
-  } */
   .sec2-content button {
     width: 90%;
     height: 45px;
@@ -565,11 +557,6 @@ section .wave.wave2{
   }
   .sec2-content {
     flex-direction: column;
-    
-    /* align-items: center;
-    gap: 30px;
-    margin: 5% 6%;
-    text-align: center; */
   }
   .video iframe {
     width: 100%;
@@ -627,32 +614,3 @@ section .wave.wave2{
 
 
 
-/* @media (max-width: 1024px) {
-  .s
-  .section-2 {
-    margin: 10% 0;
-  }
-  .sec2-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin: 5% 6%;
-    text-align: center;
-  }
-  .sec2-content h2 {
-    font-size: 3.2rem;
-    letter-spacing: 6px;
-  }
-  .para-type1 {
-    font-size: 100%;
-  }
-  .para-type2 {
-    font-size: 16px;
-    margin: 0 5%;
-  }
-  .sec2-content button {
-    width: 50%;
-    height: 50px;
-    font-size: 1.1rem;
-  }
-} */

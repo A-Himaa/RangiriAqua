@@ -74,7 +74,6 @@
     white-space: nowrap;
 }
 
-
 .competency-areas-sec {
     padding: 5% 13%;
 }
@@ -91,11 +90,9 @@
 .competency-areas {
   display: flex;
 }
-
 .column {
   flex: 1;
 }
-
 .column h3 {
   font-size: 25px;
   font-weight: 500;
@@ -103,12 +100,10 @@
   margin-bottom: 15px;
   color: #000;
 }
-
 .skills {
   padding: 5%;
   margin: 0;
 }
-
 .skills li {
   list-style: none;
   font-family: 'Poppins', sans-serif;
@@ -122,7 +117,6 @@
   align-items: center;
   position: relative;
 }
-
 .skills li::after {
   content: "";
   flex-grow: 1;
@@ -201,18 +195,49 @@
   transform: translateY(0);
 }
 
-
-
-
 @media (max-width: 1024px) {
   .progress-container {
     grid-template-columns: 1fr; 
     padding: 5% 8%;
   }
+  .progress-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 20% 5%;
+  }
+  .competency-areas {
+    flex-direction: column;
+  }
+
+  .para-img-sec{
+   display: flex;
+   flex-direction: column;
+ }
 }
-@media (max-width: 500px) {
+
+@media screen and (max-width: 768px) {
+  .progress-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 20% 5%;
+  }
+  .competency-areas {
+    flex-direction: column;
+  }
+
+  .para-img-sec{
+   display: flex;
+   flex-direction: column;
+ }
+}
+
+@media (max-width: 480px) {
   .progress-container {
     grid-template-columns: 1fr; 
-    padding: 5% 8%;
+    padding: 20% 5%;
+  }
+  .competency-areas{
+    display: flex;
+    flex-direction: column;
   }
 }
