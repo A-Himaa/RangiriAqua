@@ -529,6 +529,7 @@ section .wave.wave2{
     font-size: 1.8rem;
     color: #15ab27;
     z-index: 1100;
+    position: fixed;
   }
   .slider {
     display: none;

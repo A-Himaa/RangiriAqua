@@ -234,9 +234,10 @@ const dots = document.querySelectorAll(".dot");
   });
 
 // Paragraph Slider
+document.addEventListener("DOMContentLoaded", () => {
 let currentSlide = 0;
-  const track = document.querySelector(".image-list");
-  const slides = document.querySelectorAll(".sliding-sec-slide");
+  const track = document.querySelector(".slider-track")
+  const slides = document.querySelectorAll(".sliding-sec-slide")
   const nextSlide = document.getElementById("nextPara")
   const prevSlide = document.getElementById("prevPara")
   const paraSlides = slides.length;
@@ -244,41 +245,48 @@ let currentSlide = 0;
   function showSlide(index) {
     if (index >= paraSlides) index = 0;
     if (index < 0) index = paraSlides - 1;
-    track.style.transform = `translateX(-${index * 50}%)`;
+    if(track){
+       track.style.transform = `translateX(-${index * 50}%)`;
+    }
     currentSlide = index;
   }
 
   if (nextSlide) {
   nextSlide.addEventListener("click", () => {
       showSlide(currentSlide + 1);
-  });
+  })
  }
 
   if (prevSlide) {
   prevSlide.addEventListener("click", () => {
       showSlide(currentSlide - 1);
-  });
+  })
 }
   setInterval(() => {
     showSlide(currentSlide + 1);
   }, 7000);
 
+})
+
 // Image Model
 document.addEventListener("DOMContentLoaded", () => {
-  imageModel = document.getElementById("imageModel");
-  modelImage = document.getElementById("modelImage");
-  closeIcon  = document.getElementById("closeModel");
+  const imageModel = document.getElementById("imageModel");
+  const modelImage = document.getElementById("modelImage");
+  const closeIcon  = document.getElementById("closeModel");
+
 
   document.querySelectorAll(".thumbnail").forEach(img => {
     img.addEventListener('click' , () => {
       imageModel.style.display = "block";
       modelImage.src = img.src;
-    });
-  });
-
-  closeIcon.addEventListener('click', () => {
-    imageModel.style.display = "none";
+    })
   })
+
+    if (closeIcon) {
+      closeIcon.addEventListener("click", () => {
+        imageModel.style.display = "none";
+      });
+    }
 
   window.onclick = (e) => {
     if (e.target === imageModel) imageModel.style.display = "none";
