@@ -263,9 +263,27 @@ let currentSlide = 0;
     showSlide(currentSlide + 1);
   }, 7000);
 
+// Image Model
+document.addEventListener("DOMContentLoaded", () => {
+  imageModel = document.getElementById("imageModel");
+  modelImage = document.getElementById("modelImage");
+  closeIcon  = document.getElementById("closeModel");
 
+  document.querySelectorAll(".thumbnail").forEach(img => {
+    img.addEventListener('click' , () => {
+      imageModel.style.display = "block";
+      modelImage.src = img.src;
+    });
+  });
 
+  closeIcon.addEventListener('click', () => {
+    imageModel.style.display = "none";
+  })
 
+  window.onclick = (e) => {
+    if (e.target === imageModel) imageModel.style.display = "none";
+  }
+})
 
 
 

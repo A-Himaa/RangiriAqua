@@ -68,6 +68,7 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+    cursor: pointer;
 }
 
 /* .gallery-grid{
@@ -109,10 +110,32 @@
 .item18 {grid-column: 3 / 4; grid-row: 3;}
 .item19 {grid-column: 4 / 5; grid-row: 3;}
 
+.model{
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
+.modelImage {
+    display: block;
+    margin: 5% auto;
+    max-width: 80%;
+    max-height: 80%;
+}
 
-
-
+.modelClose{
+    position: absolute;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+    right: 10px;
+    top: 10px;
+}
 
 
 
